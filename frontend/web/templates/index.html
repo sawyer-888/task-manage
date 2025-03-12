@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+</head>
+<body>
+    <h1>Task List</h1>
+    <ul>
+        {% for task in tasks %}
+        <li>
+            {{ task['title'] }} - Priority: {{ task['priority'] }}
+            <a href="/delete/{{ task['id'] }}">[Delete]</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="/add" method="POST">
+        <input type="text" name="title" placeholder="Task Title" required>
+        <input type="text" name="description" placeholder="Description">
+        <input type="number" name="priority" placeholder="Priority" min="1" max="5" required>
+        <input type="text" name="deadline" placeholder="YYYY-MM-DD">
+        <button type="submit">Add Task</button>
+    </form>
+</body>
+</html>
